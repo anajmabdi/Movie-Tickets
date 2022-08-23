@@ -19,6 +19,7 @@ function pricing(argument) {
     price = price/2
   }
   console.log(price)
+  return price;
 }
 
 
@@ -31,7 +32,8 @@ function handleFormSubmission(event) {
   console.log(inputtedMovie, inputtedTime, inputtedAge)
   let newTicket = new Ticket(inputtedMovie, inputtedTime, inputtedAge);
   console.log(newTicket)
-  pricing(newTicket)
+  document.getElementById("result").innerText = pricing(newTicket);
+  document.getElementById("output").removeAttribute("class");
 }
 
 window.addEventListener("load", function () {
