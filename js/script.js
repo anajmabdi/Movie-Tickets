@@ -4,8 +4,36 @@ function Ticket(movie, time, age) {
   this.age = age;
 };
 
+function pricing(argument) {
+  const movie = argument.movie;
+  const time = argument.time;
+  const age = argument.age;
+  let price = 20
+  if (movie === "movie2") {
+    price -= 4
+  }
+  if (time === "day") {
+    price -= 3
+  }
+  if (age === "senior") {
+    price = price/2
+  }
+  console.log(price)
+}
 
 
 
+function handleFormSubmission(event) {
+  event.preventDefault();
+  let inputtedMovie = document.querySelector('input[name="movie"]:checked').value;
+  let inputtedTime = document.querySelector('input[name="time"]:checked').value;
+  let inputtedAge = document.querySelector('input[name="age"]:checked').value;
+  console.log(inputtedMovie, inputtedTime, inputtedAge)
+  let newTicket = new Ticket(inputtedMovie, inputtedTime, inputtedAge);
+  console.log(newTicket)
+  pricing(newTicket)
+}
 
-
+window.addEventListener("load", function () {
+  document.querySelector("form#ticket-form").addEventListener("submit", handleFormSubmission);
+});
